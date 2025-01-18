@@ -2,6 +2,7 @@ package com.example.springboot.api_demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,8 @@ public class UserService implements UserServiceInterface {
 
     @Override
     public UserResponseDto findUserById(Long id) {
-        var entity = repository.findById(id).get();
+        final var entity = repository.findById(id)
+        .orElseThrow(() -> new NoSuchElementException("指定されたIDのユーザーは存在しません。"));
         return mapper.mapToDto(entity);
     }
 
