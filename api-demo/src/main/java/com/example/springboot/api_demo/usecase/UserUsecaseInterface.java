@@ -10,4 +10,5 @@ public interface UserUsecaseInterface {
     // TODO: 以下のインターフェースのコメントアウトを外して、UserUsecaseの処理を実装する
     UserResponseDto findUserById(Long id);
     UserResponseDto addUser(UserRequestDto dto);
+    boolean switchUserActiveById(Long id);
 }

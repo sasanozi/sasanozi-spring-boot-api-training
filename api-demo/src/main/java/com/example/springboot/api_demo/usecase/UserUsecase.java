@@ -29,4 +29,9 @@ public class UserUsecase implements UserUsecaseInterface {
         return service.addUser(dto);
     }
 
+    @Override
+    public boolean switchUserActiveById(Long id) {
+        return service.switchUserActiveById(id);
+    }
+
 }

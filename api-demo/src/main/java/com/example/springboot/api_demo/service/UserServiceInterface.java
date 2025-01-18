@@ -10,4 +10,5 @@ public interface UserServiceInterface {
     // TODO: 以下のインターフェースのコメントアウトを外して、UserServiceの処理を実装する
     UserResponseDto findUserById(Long id);
     UserResponseDto addUser(UserRequestDto dto);
+    boolean switchUserActiveById(Long id);
 }
