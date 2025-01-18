@@ -2,12 +2,12 @@ package com.example.springboot.api_demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+// import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.springboot.api_demo.dto.user.UserRequestDto;
-import com.example.springboot.api_demo.dto.user.UserResponseDto;
+import com.example.springboot.api_demo.dto.UserResponseDto;
 import com.example.springboot.api_demo.entity.UserEntity;
 import com.example.springboot.api_demo.repository.UserRepository;
 import com.example.springboot.api_demo.utils.UserMapper;
@@ -22,7 +22,6 @@ public class UserService implements UserServiceInterface {
     public UserRepository repository;
 
     // ユーザー情報取得 - 一覧
-    @Override
     public List<UserResponseDto> findUserList() {
         // 拡張for文による書き方
         List<UserResponseDto> userDtoList = new ArrayList<>();
@@ -36,22 +35,5 @@ public class UserService implements UserServiceInterface {
         // .stream()
         // .map(entity -> mapper.mapToDto(entity))
         // .collect(Collectors.toList());
-    }
-
-    @Override
-    public UserResponseDto findUserById(Long id) {
-        var entity = repository.findById(id).get();
-        return mapper.mapToDto(entity);
-    }
-
-    @Override
-    public UserResponseDto addUser(UserRequestDto dto) {
-        var entity = UserEntity.builder()
-            .name(dto.getName())
-            .email(dto.getEmail())
-            .isActive(dto.isActive())
-            .build();
-
-        return mapper.mapToDto(repository.save(entity));
     }
 }
