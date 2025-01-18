@@ -1,4 +1,4 @@
-package com.example.springboot.api_demo.dto;
+package com.example.springboot.api_demo.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
